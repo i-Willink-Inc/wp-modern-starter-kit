@@ -22,6 +22,10 @@ get_header();
                         <li><a href="#atom-textarea" class="block hover:text-blue-600 transition-colors">Textarea</a></li>
                         <li><a href="#atom-heading" class="block hover:text-blue-600 transition-colors">Heading</a></li>
                         <li><a href="#atom-link" class="block hover:text-blue-600 transition-colors">Link</a></li>
+                        <li><a href="#atom-icon" class="block hover:text-blue-600 transition-colors">Icon</a></li>
+                        <li><a href="#atom-avatar" class="block hover:text-blue-600 transition-colors">Avatar</a></li>
+                        <li><a href="#atom-alert" class="block hover:text-blue-600 transition-colors">Alert</a></li>
+                        <li><a href="#atom-spinner" class="block hover:text-blue-600 transition-colors">Spinner</a></li>
                     </ul>
                 </div>
                 <div>
@@ -160,6 +164,86 @@ get_template_part('parts/atoms/button', null, [
                             <?php get_template_part('parts/atoms/link', null, ['text' => 'Default Link', 'variant' => 'default']); ?>
                             <?php get_template_part('parts/atoms/link', null, ['text' => 'Muted Link', 'variant' => 'muted']); ?>
                             <?php get_template_part('parts/atoms/link', null, ['text' => 'Underline Link', 'variant' => 'underline']); ?>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Atoms: Icon -->
+                <section id="atom-icon" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Icon</h2>
+                        <p class="text-gray-500">SVG Icons.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="p-8 flex flex-wrap gap-8 items-center justify-center bg-white text-gray-600">
+                            <?php get_template_part('parts/atoms/icon', null, ['name' => 'check']); ?>
+                            <?php get_template_part('parts/atoms/icon', null, ['name' => 'close']); ?>
+                            <?php get_template_part('parts/atoms/icon', null, ['name' => 'menu']); ?>
+                            <?php get_template_part('parts/atoms/icon', null, ['name' => 'user']); ?>
+                            <?php get_template_part('parts/atoms/icon', null, ['name' => 'search']); ?>
+                            <?php get_template_part('parts/atoms/icon', null, ['name' => 'arrow-right']); ?>
+                            <div class="text-blue-500">
+                                <?php get_template_part('parts/atoms/icon', null, ['name' => 'check', 'size' => 'lg']); ?>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Atoms: Avatar -->
+                <section id="atom-avatar" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Avatar</h2>
+                        <p class="text-gray-500">User profile images.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="p-8 flex flex-wrap gap-4 items-center justify-center bg-white">
+                            <?php get_template_part('parts/atoms/avatar', null, ['size' => 'sm']); ?>
+                            <?php get_template_part('parts/atoms/avatar', null, ['size' => 'md']); ?>
+                            <?php get_template_part('parts/atoms/avatar', null, ['size' => 'lg']); ?>
+                            <?php get_template_part('parts/atoms/avatar', null, ['size' => 'xl']); ?>
+                            <?php get_template_part('parts/atoms/avatar', null, ['src' => 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80', 'size' => 'lg']); ?>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Atoms: Alert -->
+                <section id="atom-alert" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Alert</h2>
+                        <p class="text-gray-500">Feedback messages.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="p-8 max-w-lg mx-auto bg-white space-y-4">
+                            <?php get_template_part('parts/atoms/alert', null, ['type' => 'info', 'title' => 'Information', 'message' => 'This is an information message.']); ?>
+                            <?php get_template_part('parts/atoms/alert', null, ['type' => 'success', 'title' => 'Success', 'message' => 'Operation completed successfully.']); ?>
+                            <?php get_template_part('parts/atoms/alert', null, ['type' => 'warning', 'title' => 'Warning', 'message' => 'Please be careful with this action.']); ?>
+                            <?php get_template_part('parts/atoms/alert', null, ['type' => 'error', 'title' => 'Error', 'message' => 'Something went wrong.']); ?>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Atoms: Spinner -->
+                <section id="atom-spinner" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Spinner</h2>
+                        <p class="text-gray-500">Loading indicators.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="p-8 flex flex-wrap gap-8 items-center justify-center bg-white">
+                            <?php get_template_part('parts/atoms/spinner', null, ['size' => 'sm', 'color' => 'gray']); ?>
+                            <?php get_template_part('parts/atoms/spinner', null, ['size' => 'md', 'color' => 'blue']); ?>
+                            <?php get_template_part('parts/atoms/spinner', null, ['size' => 'lg', 'color' => 'blue']); ?>
+                            <div class="p-4 bg-gray-900 rounded">
+                                <?php get_template_part('parts/atoms/spinner', null, ['size' => 'md', 'color' => 'white']); ?>
+                            </div>
                         </div>
                     </div>
                 </section>
