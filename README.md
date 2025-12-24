@@ -105,7 +105,7 @@ PHP の `get_template_part` 関数を使用して、引数を渡しながら簡�
 
 ```php
 <?php
-get_template_part('parts/components/hero-simple', null, [
+get_template_part('parts/organisms/hero-simple', null, [
     'title'       => '株式会社サンプル',
     'description' => '最新の技術でビジネスを加速させます。',
     'button_text' => 'お問い合わせ',
@@ -114,6 +114,20 @@ get_template_part('parts/components/hero-simple', null, [
 ]);
 ?>
 ```
+
+**使用例: ボタン（Atom）の表示**
+
+```php
+<?php
+get_template_part('parts/atoms/button', null, [
+    'text'    => '詳細を見る',
+    'variant' => 'primary',
+    'size'    => 'lg'
+]);
+?>
+```
+
+詳細なアーキテクチャについては [docs/architecture.md](docs/architecture.md) を参照してください。
 
 ### スタイリング
 
