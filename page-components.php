@@ -29,11 +29,22 @@ get_header();
                     </ul>
                 </div>
                 <div>
+                    <h3 class="font-semibold text-gray-900 mb-4">Molecules</h3>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="#molecule-search-form" class="block hover:text-blue-600 transition-colors">Search Form</a></li>
+                        <li><a href="#molecule-card-header" class="block hover:text-blue-600 transition-colors">Card Header</a></li>
+                    </ul>
+                </div>
+                <div>
                     <h3 class="font-semibold text-gray-900 mb-4">Organisms</h3>
                     <ul class="space-y-2 text-sm text-gray-600">
                         <li><a href="#organism-card" class="block hover:text-blue-600 transition-colors">Card</a></li>
                         <li><a href="#organism-cta" class="block hover:text-blue-600 transition-colors">CTA</a></li>
+                        <li><a href="#organism-hero-split" class="block hover:text-blue-600 transition-colors">Hero Split</a></li>
                         <li><a href="#organism-features" class="block hover:text-blue-600 transition-colors">Features</a></li>
+                        <li><a href="#organism-testimonials" class="block hover:text-blue-600 transition-colors">Testimonials</a></li>
+                        <li><a href="#organism-pricing" class="block hover:text-blue-600 transition-colors">Pricing</a></li>
+                        <li><a href="#organism-faq" class="block hover:text-blue-600 transition-colors">FAQ</a></li>
                     </ul>
                 </div>
             </nav>
@@ -248,6 +259,42 @@ get_template_part('parts/atoms/button', null, [
                     </div>
                 </section>
 
+                <!-- Molecules: Search Form -->
+                <section id="molecule-search-form" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Search Form</h2>
+                        <p class="text-gray-500">Standard standard search form.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="p-8 max-w-md mx-auto bg-white">
+                            <?php get_template_part('parts/molecules/search-form'); ?>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Molecules: Card Header -->
+                <section id="molecule-card-header" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Card Header</h2>
+                        <p class="text-gray-500">Header for cards showing title, subtitle, and actions.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="bg-white">
+                            <?php get_template_part('parts/molecules/card-header', null, [
+                                'title'       => 'Account Settings',
+                                'subtitle'    => 'Manage your account content',
+                                'action_text' => 'Edit',
+                                'action_url'  => '#',
+                                'badge'       => 'Pro',
+                            ]); ?>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Organisms: Card -->
                 <section id="organism-card" class="scroll-mt-24">
                     <div class="mb-6">
@@ -273,19 +320,6 @@ get_template_part('parts/atoms/button', null, [
                                 ]); ?>
                             </div>
                         </div>
-                    </div>
-                    <div class="mt-4 bg-gray-900 rounded-lg overflow-hidden">
-                        <div class="px-4 py-2 bg-gray-800 text-gray-400 text-xs font-mono">Usage</div>
-                        <pre class="p-4 text-sm text-gray-50 overflow-x-auto"><code>&lt;?php
-get_template_part('parts/organisms/card', null, [
-    'title'       => 'Card Title',
-    'description' => 'Description text...',
-    'image_url'   => 'https://...',
-    'badge'       => 'Featured',  // Optional
-    'badge_color' => 'blue',
-    'url'         => '/link'
-]);
-?&gt;</code></pre>
                     </div>
                 </section>
 
@@ -314,6 +348,25 @@ get_template_part('parts/organisms/card', null, [
                     </div>
                 </section>
 
+                <!-- Organisms: Hero Split -->
+                <section id="organism-hero-split" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Hero Split</h2>
+                        <p class="text-gray-500">50/50 split hero section.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="bg-white">
+                            <?php get_template_part('parts/organisms/hero-split', null, [
+                                'title'       => 'Build faster with components',
+                                'description' => 'A complete set of UI components to help you build modern WordPress themes quickly and efficiently.',
+                                'image_url'   => 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop',
+                            ]); ?>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Organisms: Features -->
                 <section id="organism-features" class="scroll-mt-24">
                     <div class="mb-6">
@@ -333,6 +386,87 @@ get_template_part('parts/organisms/card', null, [
                                     ['title' => 'Fast Setup', 'description' => 'Get started in minutes with our streamlined process.'],
                                     ['title' => 'Reliable', 'description' => 'Built on proven technologies for stability.'],
                                     ['title' => 'Scalable', 'description' => 'Grows with your business needs.'],
+                                ],
+                            ]); ?>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Organisms: Testimonials -->
+                <section id="organism-testimonials" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Testimonials</h2>
+                        <p class="text-gray-500">Social proof grid.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="bg-white">
+                            <?php get_template_part('parts/organisms/testimonials', null, [
+                                'items' => [
+                                    ['content' => 'This kit saved me hours of setup time.', 'author' => 'Sarah Doe', 'role' => 'Freelancer'],
+                                    ['content' => 'The component quality is top notch.', 'author' => 'John Smith', 'role' => 'Developer'],
+                                    ['content' => 'Highly recommended for any WP project.', 'author' => 'Jane Wilson', 'role' => 'Agency Owner'],
+                                ],
+                            ]); ?>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Organisms: Pricing -->
+                <section id="organism-pricing" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Pricing</h2>
+                        <p class="text-gray-500">Pricing tables.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="bg-white">
+                            <?php get_template_part('parts/organisms/pricing', null, [
+                                'plans' => [
+                                    [
+                                        'name' => 'Starter',
+                                        'price' => '$29',
+                                        'features' => ['Up to 5 Projects', 'Community Support', 'Basic Analytics'],
+                                        'button_text' => 'Start Free'
+                                    ],
+                                    [
+                                        'name' => 'Pro',
+                                        'price' => '$99',
+                                        'period' => 'month',
+                                        'description' => 'For growing teams.',
+                                        'features' => ['Unlimited Projects', 'Priority Support', 'Advanced Analytics'],
+                                        'featured' => true,
+                                        'button_text' => 'Get Pro'
+                                    ],
+                                    [
+                                        'name' => 'Enterprise',
+                                        'price' => 'Custom',
+                                        'features' => ['Dedicated Support', 'SLA', 'Custom Integrations'],
+                                        'button_text' => 'Contact Sales'
+                                    ],
+                                ],
+                            ]); ?>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Organisms: FAQ -->
+                <section id="organism-faq" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">FAQ</h2>
+                        <p class="text-gray-500">Frequently asked questions.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="bg-white">
+                            <?php get_template_part('parts/organisms/faq', null, [
+                                'items' => [
+                                    ['question' => 'How do I start?', 'answer' => 'Download the kit and follow the README instructions.'],
+                                    ['question' => 'Is it compatible with WooCommerce?', 'answer' => 'Yes, it works with all major plugins.'],
+                                    ['question' => 'Can I use custom Tailwind config?', 'answer' => 'Absolutely, just edit tailwind.config.js.'],
                                 ],
                             ]); ?>
                         </div>
