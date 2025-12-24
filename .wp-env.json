@@ -1,0 +1,15 @@
+{
+	"core": null,
+	"phpVersion": "8.2",
+	"themes": [ "." ],
+	"plugins": [],
+	"config": {
+		"WP_DEBUG": true,
+		"SCRIPT_DEBUG": true,
+		"WP_DEBUG_LOG": true,
+		"WP_DEBUG_DISPLAY": false
+	},
+	"mappings": {
+		"wp-content/themes/wp-modern-starter-kit": "."
+	}
+}

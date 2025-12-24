@@ -72,10 +72,14 @@ npm install
 ### 3. ローカル環境の起動 (wp-env)
 
 Docker を使用してローカルに WordPress 環境を立ち上げます。
+**Docker Desktop** もしくは **OrbStack** がインストールされ、起動している必要があります。
 
 ```bash
 npm run env:start
 ```
+
+> [!NOTE]
+> 初回起動時はWordPress本体やデータベースイメージのダウンロードが行われるため、数分かかる場合があります。
 
 *   **サイト URL**: http://localhost:8888
 *   **管理画面**: http://localhost:8888/wp-admin
