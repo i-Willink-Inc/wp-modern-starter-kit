@@ -31,6 +31,9 @@ get_header();
                         <li><a href="#atom-avatar" class="block hover:text-blue-600 transition-colors">Avatar</a></li>
                         <li><a href="#atom-alert" class="block hover:text-blue-600 transition-colors">Alert</a></li>
                         <li><a href="#atom-spinner" class="block hover:text-blue-600 transition-colors">Spinner</a></li>
+                        <li><a href="#atom-progress" class="block hover:text-blue-600 transition-colors">Progress</a></li>
+                        <li><a href="#atom-rating" class="block hover:text-blue-600 transition-colors">Rating</a></li>
+                        <li><a href="#atom-tooltip" class="block hover:text-blue-600 transition-colors">Tooltip</a></li>
                     </ul>
                 </div>
                 <div>
@@ -44,6 +47,9 @@ get_header();
                         <li><a href="#molecule-stat" class="block hover:text-blue-600 transition-colors">Stat</a></li>
                         <li><a href="#molecule-steps" class="block hover:text-blue-600 transition-colors">Steps</a></li>
                         <li><a href="#molecule-dropdown" class="block hover:text-blue-600 transition-colors">Dropdown</a></li>
+                        <li><a href="#molecule-accordion" class="block hover:text-blue-600 transition-colors">Accordion</a></li>
+                        <li><a href="#molecule-menu" class="block hover:text-blue-600 transition-colors">Menu</a></li>
+                        <li><a href="#molecule-form-group" class="block hover:text-blue-600 transition-colors">Form Group</a></li>
                     </ul>
                 </div>
                 <div>
@@ -60,6 +66,9 @@ get_header();
                         <li><a href="#organism-testimonials" class="block hover:text-blue-600 transition-colors">Testimonials</a></li>
                         <li><a href="#organism-pricing" class="block hover:text-blue-600 transition-colors">Pricing</a></li>
                         <li><a href="#organism-faq" class="block hover:text-blue-600 transition-colors">FAQ</a></li>
+                        <li><a href="#organism-contact-form" class="block hover:text-blue-600 transition-colors">Contact Form</a></li>
+                        <li><a href="#organism-gallery" class="block hover:text-blue-600 transition-colors">Gallery</a></li>
+                        <li><a href="#organism-team" class="block hover:text-blue-600 transition-colors">Team</a></li>
                     </ul>
                 </div>
             </nav>
@@ -385,6 +394,78 @@ get_template_part('parts/atoms/button', null, [
                     </div>
                 </section>
 
+                <!-- Atoms: Progress -->
+                <section id="atom-progress" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Progress</h2>
+                        <p class="text-gray-500">Progress bars for showing completion status.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="p-8 max-w-md mx-auto bg-white space-y-6">
+                            <?php get_template_part('parts/atoms/progress', null, ['value' => 25, 'label' => 'Upload Progress']); ?>
+                            <?php get_template_part('parts/atoms/progress', null, ['value' => 60, 'color' => 'green', 'variant' => 'gradient']); ?>
+                            <?php get_template_part('parts/atoms/progress', null, ['value' => 85, 'color' => 'purple', 'size' => 'lg']); ?>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Atoms: Rating -->
+                <section id="atom-rating" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Rating</h2>
+                        <p class="text-gray-500">Star rating display with partial star support.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="p-8 bg-white space-y-4">
+                            <div class="flex items-center gap-4">
+                                <span class="text-sm text-gray-600">5.0:</span>
+                                <?php get_template_part('parts/atoms/rating', null, ['value' => 5]); ?>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="text-sm text-gray-600">3.5:</span>
+                                <?php get_template_part('parts/atoms/rating', null, ['value' => 3.5]); ?>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="text-sm text-gray-600">2.0:</span>
+                                <?php get_template_part('parts/atoms/rating', null, ['value' => 2, 'color' => 'red']); ?>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Atoms: Tooltip -->
+                <section id="atom-tooltip" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Tooltip</h2>
+                        <p class="text-gray-500">Informational popups on hover.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="p-8 bg-white flex flex-wrap gap-8 items-center justify-center">
+                            <?php get_template_part('parts/atoms/tooltip', null, [
+                                'text' => 'This is a tooltip',
+                                'content' => '<span class="text-blue-600 underline">Hover me (top)</span>',
+                                'position' => 'top',
+                            ]); ?>
+                            <?php get_template_part('parts/atoms/tooltip', null, [
+                                'text' => 'Bottom tooltip',
+                                'content' => '<span class="text-blue-600 underline">Hover me (bottom)</span>',
+                                'position' => 'bottom',
+                            ]); ?>
+                            <?php get_template_part('parts/atoms/tooltip', null, [
+                                'text' => 'Light variant',
+                                'content' => '<span class="text-blue-600 underline">Light tooltip</span>',
+                                'variant' => 'light',
+                            ]); ?>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Molecules: Search Form -->
                 <section id="molecule-search-form" class="scroll-mt-24">
                     <div class="mb-6">
@@ -569,6 +650,90 @@ get_template_part('parts/atoms/button', null, [
                                     ['label' => 'Download', 'url' => '#'],
                                     ['label' => 'Share', 'url' => '#'],
                                 ],
+                            ]); ?>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Molecules: Accordion -->
+                <section id="molecule-accordion" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Accordion</h2>
+                        <p class="text-gray-500">Expandable content panels.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="p-8 bg-white">
+                            <?php get_template_part('parts/molecules/accordion', null, [
+                                'variant' => 'bordered',
+                                'items' => [
+                                    ['title' => 'アコーディオン項目 1', 'content' => 'これは最初のアコーディオン項目の内容です。必要に応じて展開/折りたたみができます。', 'open' => true],
+                                    ['title' => 'アコーディオン項目 2', 'content' => 'これは2番目のアコーディオン項目の内容です。'],
+                                    ['title' => 'アコーディオン項目 3', 'content' => 'これは3番目のアコーディオン項目の内容です。'],
+                                ],
+                            ]); ?>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Molecules: Menu -->
+                <section id="molecule-menu" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Menu</h2>
+                        <p class="text-gray-500">Vertical navigation menu.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="p-8 bg-white max-w-xs">
+                            <?php get_template_part('parts/molecules/menu', null, [
+                                'items' => [
+                                    ['label' => 'ダッシュボード', 'url' => '#', 'active' => true],
+                                    ['label' => 'プロジェクト', 'url' => '#', 'badge' => '5'],
+                                    ['label' => '設定', 'url' => '#', 'children' => [
+                                        ['label' => 'プロフィール', 'url' => '#'],
+                                        ['label' => 'セキュリティ', 'url' => '#'],
+                                    ]],
+                                ],
+                            ]); ?>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Molecules: Form Group -->
+                <section id="molecule-form-group" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Form Group</h2>
+                        <p class="text-gray-500">Universal form field component.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="p-8 bg-white max-w-md space-y-4">
+                            <?php get_template_part('parts/molecules/form-group', null, [
+                                'label' => 'メールアドレス',
+                                'name' => 'email',
+                                'type' => 'email',
+                                'placeholder' => 'example@email.com',
+                                'required' => true,
+                            ]); ?>
+                            <?php get_template_part('parts/molecules/form-group', null, [
+                                'label' => 'カテゴリ',
+                                'name' => 'category',
+                                'type' => 'select',
+                                'placeholder' => '選択してください',
+                                'options' => [
+                                    ['value' => '1', 'label' => 'オプション 1'],
+                                    ['value' => '2', 'label' => 'オプション 2'],
+                                ],
+                            ]); ?>
+                            <?php get_template_part('parts/molecules/form-group', null, [
+                                'label' => 'エラー状態',
+                                'name' => 'error_field',
+                                'type' => 'text',
+                                'value' => '無効な値',
+                                'error' => 'このフィールドは無効です',
                             ]); ?>
                         </div>
                     </div>
@@ -867,6 +1032,69 @@ get_template_part('parts/atoms/button', null, [
                                     ['question' => 'How do I start?', 'answer' => 'Download the kit and follow the README instructions.'],
                                     ['question' => 'Is it compatible with WooCommerce?', 'answer' => 'Yes, it works with all major plugins.'],
                                     ['question' => 'Can I use custom Tailwind config?', 'answer' => 'Absolutely, just edit tailwind.config.js.'],
+                                ],
+                            ]); ?>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Organisms: Contact Form -->
+                <section id="organism-contact-form" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Contact Form</h2>
+                        <p class="text-gray-500">Complete contact form with validation.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="bg-white p-8">
+                            <?php get_template_part('parts/organisms/contact-form', null, [
+                                'variant' => 'card',
+                                'show_company' => true,
+                            ]); ?>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Organisms: Gallery -->
+                <section id="organism-gallery" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Gallery</h2>
+                        <p class="text-gray-500">Image gallery with lightbox.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="bg-white p-8">
+                            <?php get_template_part('parts/organisms/gallery', null, [
+                                'columns' => 3,
+                                'images' => [
+                                    ['url' => 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=400&fit=crop', 'alt' => 'Image 1', 'caption' => 'コーディング風景'],
+                                    ['url' => 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=400&fit=crop', 'alt' => 'Image 2', 'caption' => 'デスク周り'],
+                                    ['url' => 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=400&fit=crop', 'alt' => 'Image 3', 'caption' => 'ワークスペース'],
+                                ],
+                            ]); ?>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Organisms: Team -->
+                <section id="organism-team" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Team</h2>
+                        <p class="text-gray-500">Team member cards with social links.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="bg-white p-8">
+                            <?php get_template_part('parts/organisms/team', null, [
+                                'variant' => 'card',
+                                'columns' => 3,
+                                'members' => [
+                                    ['name' => '山田 太郎', 'role' => 'CEO', 'image' => 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=256&h=256&fit=crop', 'bio' => 'チームをリードするCEO。'],
+                                    ['name' => '佐藤 花子', 'role' => 'デザイナー', 'image' => 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=256&h=256&fit=crop', 'bio' => 'ユーザー体験を設計。'],
+                                    ['name' => '鈴木 一郎', 'role' => 'エンジニア', 'image' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=256&h=256&fit=crop', 'bio' => 'フロントエンド開発担当。'],
                                 ],
                             ]); ?>
                         </div>
