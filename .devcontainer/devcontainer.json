@@ -1,0 +1,42 @@
+{
+    "name": "WP Modern Starter Kit",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "devcontainer",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "20"
+        },
+        "ghcr.io/devcontainers/features/php:1": {
+            "version": "8.2"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "bmewburn.vscode-intelephense-client",
+                "esbenp.prettier-vscode",
+                "bradlc.vscode-tailwindcss",
+                "dbaeumer.vscode-eslint",
+                "wordpresstoolbox.wordpress-toolbox",
+                "GitHub.copilot",
+                "ms-azuretools.vscode-docker"
+            ],
+            "settings": {
+                "editor.formatOnSave": true,
+                "editor.defaultFormatter": "esbenp.prettier-vscode",
+                "[php]": {
+                    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+                },
+                "tailwindCSS.includeLanguages": {
+                    "php": "html"
+                }
+            }
+        }
+    },
+    "postCreateCommand": "npm install",
+    "forwardPorts": [
+        8888
+    ],
+    "remoteUser": "vscode"
+}
