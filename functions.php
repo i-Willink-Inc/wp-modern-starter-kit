@@ -42,5 +42,32 @@ function wp_modern_starter_kit_setup() {
 			'menu-1' => esc_html__( 'Primary', 'wp-modern-starter-kit' ),
 		)
 	);
+
+	// Add support for responsive embedded content.
+	add_theme_support( 'responsive-embeds' );
+
+	// Add support for editor styles.
+	add_theme_support( 'editor-styles' );
+
+	// Add support for HTML5.
+	add_theme_support(
+		'html5',
+		array(
+			'search-form',
+			'comment-form',
+			'comment-list',
+			'gallery',
+			'caption',
+			'style',
+			'script',
+		)
+	);
 }
 add_action( 'after_setup_theme', 'wp_modern_starter_kit_setup' );
+
+/**
+ * Include additional theme functionality.
+ */
+require get_template_directory() . '/inc/performance.php';
+require get_template_directory() . '/inc/seo.php';
+
