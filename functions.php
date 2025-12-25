@@ -30,6 +30,9 @@ add_action( 'wp_enqueue_scripts', 'wp_modern_starter_kit_scripts' );
  * Theme setup.
  */
 function wp_modern_starter_kit_setup() {
+	// Load theme textdomain for translations.
+	load_theme_textdomain( 'wp-modern-starter-kit', get_template_directory() . '/languages' );
+
 	// Let WordPress manage the document title.
 	add_theme_support( 'title-tag' );
 
@@ -68,6 +71,8 @@ add_action( 'after_setup_theme', 'wp_modern_starter_kit_setup' );
 /**
  * Include additional theme functionality.
  */
+require get_template_directory() . '/inc/admin-settings.php';
 require get_template_directory() . '/inc/performance.php';
 require get_template_directory() . '/inc/seo.php';
+
 

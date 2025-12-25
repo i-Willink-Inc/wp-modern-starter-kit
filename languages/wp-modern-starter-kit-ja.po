@@ -1,0 +1,147 @@
+# Copyright (C) 2024 i-Willink Inc.
+# This file is distributed under the MIT License.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Modern Starter Kit 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-25 12:00:00+0000\n"
+"PO-Revision-Date: 2024-12-25 12:00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: inc/admin-settings.php
+msgid "Theme Settings"
+msgstr "テーマ設定"
+
+#: inc/admin-settings.php
+msgid "SEO Settings"
+msgstr "SEO 設定"
+
+#: inc/admin-settings.php
+msgid "Analytics Settings"
+msgstr "アナリティクス設定"
+
+#: inc/admin-settings.php
+msgid "Performance Settings"
+msgstr "パフォーマンス設定"
+
+#: inc/admin-settings.php
+msgid "Default OGP Image"
+msgstr "デフォルト OGP 画像"
+
+#: inc/admin-settings.php
+msgid "Twitter Username"
+msgstr "Twitter ユーザー名"
+
+#: inc/admin-settings.php
+msgid "Facebook App ID"
+msgstr "Facebook App ID"
+
+#: inc/admin-settings.php
+msgid "Google Analytics ID"
+msgstr "Google Analytics ID"
+
+#: inc/admin-settings.php
+msgid "GTM Container ID"
+msgstr "GTM コンテナ ID"
+
+#: inc/admin-settings.php
+msgid "Remove Emoji Scripts"
+msgstr "絵文字スクリプトを削除"
+
+#: inc/admin-settings.php
+msgid "Lazy Loading Images"
+msgstr "画像の遅延読み込み"
+
+#: inc/admin-settings.php
+msgid "Google Fonts Preconnect"
+msgstr "Google Fonts プリコネクト"
+
+#: inc/admin-settings.php
+msgid "Hide WordPress Version"
+msgstr "WordPress バージョン非表示"
+
+#: inc/admin-settings.php
+msgid "Settings for SNS sharing meta tags and search engine optimization."
+msgstr "SNS シェア時のメタタグや検索エンジン最適化に関する設定です。"
+
+#: inc/admin-settings.php
+msgid "Configure tracking codes for analytics tools."
+msgstr "アクセス解析ツールのトラッキングコードを設定します。"
+
+#: inc/admin-settings.php
+msgid "Settings for page load speed optimization."
+msgstr "ページ読み込み速度の最適化に関する設定です。"
+
+#: inc/admin-settings.php
+msgid "Select Image"
+msgstr "画像を選択"
+
+#: inc/admin-settings.php
+msgid "Remove"
+msgstr "削除"
+
+#: inc/admin-settings.php
+msgid "Choose OGP Image"
+msgstr "OGP画像を選択"
+
+#: inc/admin-settings.php
+msgid "Use this image"
+msgstr "選択"
+
+#: inc/admin-settings.php
+msgid "Default OGP image used when no featured image is available (Recommended: 1200x630px)"
+msgstr "アイキャッチ画像がない場合に使用されるデフォルトのOGP画像（推奨: 1200x630px）"
+
+#: inc/admin-settings.php
+msgid "Used for twitter:site in Twitter Cards (include @ symbol)"
+msgstr "Twitter Card の twitter:site に使用されます（@を含めて入力）"
+
+#: inc/admin-settings.php
+msgid "Used for fb:app_id in Facebook OGP"
+msgstr "Facebook OGP の fb:app_id に使用されます"
+
+#: inc/admin-settings.php
+msgid "Google Analytics 4 Measurement ID"
+msgstr "Google Analytics 4 の測定 ID"
+
+#: inc/admin-settings.php
+msgid "Google Tag Manager Container ID"
+msgstr "Google Tag Manager のコンテナ ID"
+
+#: inc/admin-settings.php
+msgid "Remove emoji scripts to improve page speed"
+msgstr "絵文字スクリプトを削除してページ速度を改善"
+
+#: inc/admin-settings.php
+msgid "Add loading=\"lazy\" to images"
+msgstr "画像に loading=\"lazy\" を追加"
+
+#: inc/admin-settings.php
+msgid "Add preconnect for Google Fonts (recommended when using web fonts)"
+msgstr "Google Fonts への preconnect を追加（フォント使用時に推奨）"
+
+#: inc/admin-settings.php
+msgid "Remove WordPress version from source code (improves security)"
+msgstr "WordPress バージョン情報をソースから削除（セキュリティ向上）"
+
+#: inc/admin-settings.php
+msgid "Settings saved."
+msgstr "設定を保存しました"
+
+#: inc/admin-settings.php
+msgid "Save Settings"
+msgstr "設定を保存"
+
+#: inc/seo.php
+msgid "Home"
+msgstr "ホーム"
+
+#: header.php
+msgid "Skip to content"
+msgstr "コンテンツへスキップ"

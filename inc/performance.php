@@ -16,6 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return string Modified content with lazy loading.
  */
 function wpms_add_lazy_loading( $content ) {
+	// Check if lazy loading is enabled in settings
+	if ( ! get_option( 'wpms_lazy_loading', true ) ) {
+		return $content;
+	}
+
 	// WordPress 5.5+ adds loading="lazy" by default, but ensure it's applied
 	if ( ! preg_match( '/loading=["\']/', $content ) ) {
 		$content = preg_replace(
@@ -54,19 +59,25 @@ add_filter( 'wp_get_attachment_image_attributes', 'wpms_add_fetchpriority', 10, 
 function wpms_add_resource_hints() {
 	// DNS Prefetch for common third-party services
 	$dns_prefetch = array(
-		'//fonts.googleapis.com',
-		'//fonts.gstatic.com',
 		'//www.google-analytics.com',
 		'//www.googletagmanager.com',
 	);
+
+	// Add Google Fonts if enabled in settings
+	if ( get_option( 'wpms_preconnect_google_fonts', true ) ) {
+		$dns_prefetch[] = '//fonts.googleapis.com';
+		$dns_prefetch[] = '//fonts.gstatic.com';
+	}
 
 	foreach ( $dns_prefetch as $url ) {
 		echo '<link rel="dns-prefetch" href="' . esc_url( $url ) . '">' . "\n";
 	}
 
-	// Preconnect for Google Fonts
-	echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
-	echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+	// Preconnect for Google Fonts if enabled
+	if ( get_option( 'wpms_preconnect_google_fonts', true ) ) {
+		echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+		echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+	}
 }
 add_action( 'wp_head', 'wpms_add_resource_hints', 1 );
 
@@ -117,14 +128,16 @@ add_filter( 'script_loader_tag', 'wpms_defer_scripts', 10, 3 );
  * Remove unnecessary WordPress features for performance.
  */
 function wpms_remove_bloat() {
-	// Remove emoji scripts
-	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-	remove_action( 'wp_print_styles', 'print_emoji_styles' );
-	remove_action( 'admin_print_styles', 'print_emoji_styles' );
-	remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
-	remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
-	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+	// Remove emoji scripts if enabled in settings
+	if ( get_option( 'wpms_disable_emoji', true ) ) {
+		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+		remove_action( 'wp_print_styles', 'print_emoji_styles' );
+		remove_action( 'admin_print_styles', 'print_emoji_styles' );
+		remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+		remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+		remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+	}
 
 	// Remove RSD link
 	remove_action( 'wp_head', 'rsd_link' );
@@ -132,8 +145,10 @@ function wpms_remove_bloat() {
 	// Remove Windows Live Writer manifest
 	remove_action( 'wp_head', 'wlwmanifest_link' );
 
-	// Remove WordPress version
-	remove_action( 'wp_head', 'wp_generator' );
+	// Remove WordPress version if enabled in settings
+	if ( get_option( 'wpms_remove_wp_generator', true ) ) {
+		remove_action( 'wp_head', 'wp_generator' );
+	}
 
 	// Remove shortlink
 	remove_action( 'wp_head', 'wp_shortlink_wp_head', 10 );
@@ -147,13 +162,17 @@ function wpms_remove_bloat() {
 add_action( 'init', 'wpms_remove_bloat' );
 
 /**
- * Disable emoji DNS prefetch.
+ * Disable emoji DNS prefetch if emoji is disabled.
  *
  * @param array  $urls          URLs to prefetch.
  * @param string $relation_type The relation type.
  * @return array Filtered URLs.
  */
 function wpms_disable_emoji_dns_prefetch( $urls, $relation_type ) {
+	if ( ! get_option( 'wpms_disable_emoji', true ) ) {
+		return $urls;
+	}
+
 	if ( 'dns-prefetch' === $relation_type ) {
 		$urls = array_filter( $urls, function( $url ) {
 			return ! str_contains( $url, 'emoji' );
