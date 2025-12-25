@@ -1,7 +1,9 @@
 {
 	"core": null,
 	"phpVersion": "8.2",
-	"themes": [ "." ],
+	"themes": [
+		"."
+	],
 	"plugins": [],
 	"config": {
 		"WP_DEBUG": true,
@@ -10,6 +12,7 @@
 		"WP_DEBUG_DISPLAY": false
 	},
 	"mappings": {
-		"wp-content/themes/wp-modern-starter-kit": "."
+		"wp-content/themes/wp-modern-starter-kit": ".",
+		".htaccess": ".htaccess"
 	}
 }

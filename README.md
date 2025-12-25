@@ -99,6 +99,23 @@ npm run env:start
     *   User: `admin`
     *   Password: `password`
 
+#### Pretty Permalinks (パーマリンク設定)
+
+`/sample-page/` のようなクリーンな URL を有効にするには、管理画面で設定します:
+
+1. WordPress 管理画面にログイン → **設定 > パーマリンク**
+2. **「投稿名」** を選択
+3. **「変更を保存」** をクリック
+
+または、以下のコマンドを実行:
+
+```bash
+npm run env:permalinks
+```
+
+> [!NOTE]
+> 初回セットアップ時は `npm run env:setup` を使用すると、wp-env の起動とパーマリンク設定を一括で行えます。
+
 ### 4. 開発サーバーの起動
 
 ファイルの変更を監視し、自動ビルドとホットリロードを行います。
