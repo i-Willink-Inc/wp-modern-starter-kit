@@ -95,13 +95,16 @@ $modal_size = $size_classes[ $args['size'] ] ?? $size_classes['md'];
 </div>
 
 <script>
+let previouslyFocusedElement = null;
+
 function openModal(modalId) {
     const modal = document.getElementById(modalId);
+    previouslyFocusedElement = document.activeElement;
     modal.classList.remove('hidden');
     document.body.classList.add('overflow-hidden');
     
-    // Focus trap
-    const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    // Focus first focusable element
+    const focusable = getFocusableElements(modal);
     if (focusable.length) focusable[0].focus();
 }
 
@@ -109,14 +112,52 @@ function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     modal.classList.add('hidden');
     document.body.classList.remove('overflow-hidden');
+    
+    // Restore focus to previously focused element
+    if (previouslyFocusedElement) {
+        previouslyFocusedElement.focus();
+        previouslyFocusedElement = null;
+    }
 }
 
-// Close on Escape key
+function getFocusableElements(container) {
+    return container.querySelectorAll(
+        'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+}
+
+// Handle keyboard events for modal
 document.addEventListener('keydown', function(e) {
+    const openModal = document.querySelector('[role="dialog"]:not(.hidden)');
+    if (!openModal) return;
+    
+    // Close on Escape
     if (e.key === 'Escape') {
-        document.querySelectorAll('[role="dialog"]:not(.hidden)').forEach(modal => {
-            closeModal(modal.id);
-        });
+        closeModal(openModal.id);
+        return;
+    }
+    
+    // Focus trap on Tab
+    if (e.key === 'Tab') {
+        const focusable = getFocusableElements(openModal);
+        if (focusable.length === 0) return;
+        
+        const firstElement = focusable[0];
+        const lastElement = focusable[focusable.length - 1];
+        
+        if (e.shiftKey) {
+            // Shift + Tab: cycle to last element if on first
+            if (document.activeElement === firstElement) {
+                e.preventDefault();
+                lastElement.focus();
+            }
+        } else {
+            // Tab: cycle to first element if on last
+            if (document.activeElement === lastElement) {
+                e.preventDefault();
+                firstElement.focus();
+            }
+        }
     }
 });
 </script>

@@ -99,17 +99,67 @@ $styles = $variant_styles[ $args['variant'] ] ?? $variant_styles['underline'];
 <script>
 function switchTab(clickedTab, containerId) {
     const container = document.getElementById(containerId);
+    const styles = <?php echo json_encode($styles); ?>;
     
     // Reset all tabs
     container.querySelectorAll('[role="tab"]').forEach(tab => {
         tab.setAttribute('aria-selected', 'false');
+        tab.setAttribute('tabindex', '-1');
+        tab.classList.remove(...styles.active.split(' '));
+        tab.classList.add(...styles.inactive.split(' '));
         const targetPanel = document.querySelector(tab.dataset.tabTarget);
         if (targetPanel) targetPanel.classList.add('hidden');
     });
     
     // Activate clicked tab
     clickedTab.setAttribute('aria-selected', 'true');
+    clickedTab.setAttribute('tabindex', '0');
+    clickedTab.classList.remove(...styles.inactive.split(' '));
+    clickedTab.classList.add(...styles.active.split(' '));
     const targetPanel = document.querySelector(clickedTab.dataset.tabTarget);
     if (targetPanel) targetPanel.classList.remove('hidden');
 }
+
+// Keyboard navigation for tabs
+document.addEventListener('keydown', function(e) {
+    const target = e.target;
+    if (target.getAttribute('role') !== 'tab') return;
+    
+    const tablist = target.closest('[role="tablist"]');
+    if (!tablist) return;
+    
+    const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+    const currentIndex = tabs.indexOf(target);
+    let newIndex = currentIndex;
+    
+    switch (e.key) {
+        case 'ArrowLeft':
+        case 'ArrowUp':
+            e.preventDefault();
+            newIndex = currentIndex === 0 ? tabs.length - 1 : currentIndex - 1;
+            break;
+        case 'ArrowRight':
+        case 'ArrowDown':
+            e.preventDefault();
+            newIndex = currentIndex === tabs.length - 1 ? 0 : currentIndex + 1;
+            break;
+        case 'Home':
+            e.preventDefault();
+            newIndex = 0;
+            break;
+        case 'End':
+            e.preventDefault();
+            newIndex = tabs.length - 1;
+            break;
+        default:
+            return;
+    }
+    
+    if (newIndex !== currentIndex) {
+        const containerId = tablist.closest('[id]').id;
+        tabs[newIndex].focus();
+        switchTab(tabs[newIndex], containerId);
+    }
+});
 </script>
+
