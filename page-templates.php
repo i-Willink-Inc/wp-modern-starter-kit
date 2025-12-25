@@ -186,7 +186,7 @@ $page_templates = [
         <div class="flex flex-col lg:flex-row gap-8">
             
             <!-- Sidebar Navigation -->
-            <aside class="lg:w-64 flex-shrink-0">
+            <aside class="hidden lg:block lg:w-64 flex-shrink-0">
                 <nav class="sticky top-24 space-y-1">
                     <h2 class="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                         <?php esc_html_e( 'Sections', 'wp-modern-starter-kit' ); ?>
@@ -260,19 +260,24 @@ $page_templates = [
                                     <div id="preview-<?php echo esc_attr( $template['slug'] ); ?>" class="template-panel">
                                         <div class="bg-gray-100 p-4">
                                             <?php 
-                                            $template_file = get_template_directory() . '/parts/templates/' . $template['slug'] . '.php';
-                                            if ( file_exists( $template_file ) ) {
-                                                include $template_file;
-                                            } else {
-                                                ?>
-                                                <div class="bg-white rounded-lg p-12 text-center text-gray-500">
-                                                    <svg class="w-12 h-12 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                                    </svg>
-                                                    <p><?php esc_html_e( 'Preview coming soon', 'wp-modern-starter-kit' ); ?></p>
-                                                </div>
-                                                <?php
-                                            }
+                                            // Isolate scope to prevent variable leakage between templates
+                                            (function() use ($template) {
+                                                $template_file = get_template_directory() . '/parts/templates/' . $template['slug'] . '.php';
+                                                if ( file_exists( $template_file ) ) {
+                                                    // Reset $args to ensure fresh start for each template
+                                                    $args = []; 
+                                                    include $template_file;
+                                                } else {
+                                                    ?>
+                                                    <div class="bg-white rounded-lg p-12 text-center text-gray-500">
+                                                        <svg class="w-12 h-12 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                                        </svg>
+                                                        <p><?php esc_html_e( 'Preview coming soon', 'wp-modern-starter-kit' ); ?></p>
+                                                    </div>
+                                                    <?php
+                                                }
+                                            })();
                                             ?>
                                         </div>
                                     </div>
@@ -281,6 +286,7 @@ $page_templates = [
                                     <div id="code-<?php echo esc_attr( $template['slug'] ); ?>" class="template-panel hidden">
                                         <div class="relative">
                                             <pre class="language-php overflow-x-auto text-sm"><code id="code-content-<?php echo esc_attr( $template['slug'] ); ?>"><?php
+                                            $template_file = get_template_directory() . '/parts/templates/' . $template['slug'] . '.php';
                                             if ( file_exists( $template_file ) ) {
                                                 echo esc_html( file_get_contents( $template_file ) );
                                             } else {

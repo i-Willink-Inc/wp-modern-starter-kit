@@ -52,26 +52,26 @@ $styles = $variants[ $args['variant'] ] ?? $variants['light'];
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         <div class="text-center max-w-2xl mx-auto">
             <h2 class="text-3xl font-bold tracking-tight <?php echo esc_attr( $styles['title'] ); ?> sm:text-4xl">
-                <?php echo esc_html( $args['title'] ); ?>
+                <?php echo esc_html( $args['title'] ?? '' ); ?>
             </h2>
             
             <p class="mt-6 text-lg leading-8 <?php echo esc_attr( $styles['description'] ); ?>">
-                <?php echo esc_html( $args['description'] ); ?>
+                <?php echo esc_html( $args['description'] ?? '' ); ?>
             </p>
 
             <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <?php if ( $args['primary_btn'] ) : ?>
+                <?php if ( ! empty( $args['primary_btn'] ) ) : ?>
                     <a href="<?php echo esc_url( $args['primary_btn']['url'] ); ?>" 
-                       class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-lg shadow-sm transition-colors <?php echo esc_attr( $styles['primary'] ); ?>">
+                       class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-lg shadow-sm transition-colors w-full sm:w-auto <?php echo esc_attr( $styles['primary'] ); ?>">
                         <?php echo esc_html( $args['primary_btn']['text'] ); ?>
                     </a>
                 <?php endif; ?>
 
-                <?php if ( $args['secondary_btn'] ) : ?>
+                <?php if ( ! empty( $args['secondary_btn'] ) ) : ?>
                     <a href="<?php echo esc_url( $args['secondary_btn']['url'] ); ?>" 
-                       class="text-base font-semibold leading-6 transition-colors <?php echo esc_attr( $styles['secondary'] ); ?>">
+                       class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold leading-6 transition-colors w-full sm:w-auto <?php echo esc_attr( $styles['secondary'] ); ?>">
                         <?php echo esc_html( $args['secondary_btn']['text'] ); ?> 
-                        <span aria-hidden="true">→</span>
+                        <span aria-hidden="true" class="ml-2">→</span>
                     </a>
                 <?php endif; ?>
             </div>

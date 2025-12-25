@@ -50,37 +50,39 @@ $args = wp_parse_args( $args ?? [], $defaults );
 <section class="bg-white py-24 sm:py-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl mx-auto text-center lg:text-left lg:mx-0">
-            <?php if ( $args['subtitle'] ) : ?>
+            <?php if ( ! empty( $args['subtitle'] ) ) : ?>
                 <p class="text-base font-semibold leading-7 text-blue-600">
                     <?php echo esc_html( $args['subtitle'] ); ?>
                 </p>
             <?php endif; ?>
             
             <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                <?php echo esc_html( $args['title'] ); ?>
+                <?php echo esc_html( $args['title'] ?? '' ); ?>
             </h2>
             
-            <?php if ( $args['description'] ) : ?>
+            <?php if ( ! empty( $args['description'] ) ) : ?>
                 <p class="mt-6 text-lg leading-8 text-gray-600">
                     <?php echo esc_html( $args['description'] ); ?>
                 </p>
             <?php endif; ?>
         </div>
 
-        <div class="mt-16 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-            <?php foreach ( $args['features'] as $feature ) : ?>
-                <div class="relative pl-16">
-                    <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 text-white">
-                        <?php echo $feature['icon']; // phpcs:ignore ?>
+        <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
+            <?php if ( ! empty( $args['features'] ) ) : ?>
+                <?php foreach ( $args['features'] as $feature ) : ?>
+                    <div class="relative pl-16">
+                        <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 text-white">
+                            <?php echo $feature['icon']; // phpcs:ignore ?>
+                        </div>
+                        <h3 class="text-base font-semibold leading-7 text-gray-900">
+                            <?php echo esc_html( $feature['title'] ); ?>
+                        </h3>
+                        <p class="mt-2 text-base leading-7 text-gray-600">
+                            <?php echo esc_html( $feature['description'] ); ?>
+                        </p>
                     </div>
-                    <h3 class="text-base font-semibold leading-7 text-gray-900">
-                        <?php echo esc_html( $feature['title'] ); ?>
-                    </h3>
-                    <p class="mt-2 text-base leading-7 text-gray-600">
-                        <?php echo esc_html( $feature['description'] ); ?>
-                    </p>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>
 </section>

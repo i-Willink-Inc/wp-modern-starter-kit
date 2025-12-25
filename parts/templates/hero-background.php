@@ -35,7 +35,7 @@ $text_muted = $args['overlay'] === 'light' ? 'text-gray-600' : 'text-gray-200';
 
 <section class="relative isolate overflow-hidden">
     <!-- Background Image -->
-    <img src="<?php echo esc_url( $args['image'] ); ?>" 
+    <img src="<?php echo esc_url( $args['image'] ?? '' ); ?>" 
          alt="" 
          class="absolute inset-0 -z-10 h-full w-full object-cover"
          loading="lazy">
@@ -43,28 +43,28 @@ $text_muted = $args['overlay'] === 'light' ? 'text-gray-600' : 'text-gray-200';
     <!-- Overlay -->
     <div class="absolute inset-0 -z-10 <?php echo esc_attr( $overlay ); ?>"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 lg:py-48">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-48">
         <div class="max-w-2xl">
             <h1 class="text-4xl font-bold tracking-tight <?php echo esc_attr( $text_color ); ?> sm:text-5xl lg:text-6xl">
-                <?php echo esc_html( $args['title'] ); ?>
+                <?php echo esc_html( $args['title'] ?? '' ); ?>
             </h1>
 
             <p class="mt-6 text-lg leading-8 <?php echo esc_attr( $text_muted ); ?>">
-                <?php echo esc_html( $args['description'] ); ?>
+                <?php echo esc_html( $args['description'] ?? '' ); ?>
             </p>
 
             <div class="mt-10 flex flex-col sm:flex-row items-start gap-4">
-                <?php if ( $args['primary_btn'] ) : ?>
+                <?php if ( ! empty( $args['primary_btn'] ) ) : ?>
                     <a href="<?php echo esc_url( $args['primary_btn']['url'] ); ?>" 
-                       class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-blue-600 rounded-lg shadow-lg hover:bg-blue-500 transition-colors">
+                       class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-blue-600 rounded-lg shadow-lg hover:bg-blue-500 transition-colors w-full sm:w-auto">
                         <?php echo esc_html( $args['primary_btn']['text'] ); ?>
                     </a>
                 <?php endif; ?>
 
-                <?php if ( $args['secondary_btn'] ) : ?>
+                <?php if ( ! empty( $args['secondary_btn'] ) ) : ?>
                     <a href="<?php echo esc_url( $args['secondary_btn']['url'] ); ?>" 
-                       class="inline-flex items-center text-base font-semibold <?php echo esc_attr( $text_color ); ?> hover:opacity-80 transition-opacity">
-                        <svg class="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                       class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold <?php echo esc_attr( $text_color ); ?> hover:opacity-80 transition-opacity w-full sm:w-auto">
+                        <svg class="mr-2 w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
                         </svg>
                         <?php echo esc_html( $args['secondary_btn']['text'] ); ?>
