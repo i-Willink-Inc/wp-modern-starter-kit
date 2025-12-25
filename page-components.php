@@ -34,6 +34,7 @@ get_header();
                         <li><a href="#atom-progress" class="block hover:text-blue-600 transition-colors">Progress</a></li>
                         <li><a href="#atom-rating" class="block hover:text-blue-600 transition-colors">Rating</a></li>
                         <li><a href="#atom-tooltip" class="block hover:text-blue-600 transition-colors">Tooltip</a></li>
+                        <li><a href="#atom-skeleton" class="block hover:text-blue-600 transition-colors">Skeleton</a></li>
                     </ul>
                 </div>
                 <div>
@@ -50,6 +51,8 @@ get_header();
                         <li><a href="#molecule-accordion" class="block hover:text-blue-600 transition-colors">Accordion</a></li>
                         <li><a href="#molecule-menu" class="block hover:text-blue-600 transition-colors">Menu</a></li>
                         <li><a href="#molecule-form-group" class="block hover:text-blue-600 transition-colors">Form Group</a></li>
+                        <li><a href="#molecule-toast" class="block hover:text-blue-600 transition-colors">Toast</a></li>
+                        <li><a href="#molecule-table" class="block hover:text-blue-600 transition-colors">Table</a></li>
                     </ul>
                 </div>
                 <div>
@@ -69,6 +72,8 @@ get_header();
                         <li><a href="#organism-contact-form" class="block hover:text-blue-600 transition-colors">Contact Form</a></li>
                         <li><a href="#organism-gallery" class="block hover:text-blue-600 transition-colors">Gallery</a></li>
                         <li><a href="#organism-team" class="block hover:text-blue-600 transition-colors">Team</a></li>
+                        <li><a href="#organism-drawer" class="block hover:text-blue-600 transition-colors">Drawer</a></li>
+                        <li><a href="#organism-carousel" class="block hover:text-blue-600 transition-colors">Carousel</a></li>
                     </ul>
                 </div>
             </nav>
@@ -1095,6 +1100,127 @@ get_template_part('parts/atoms/button', null, [
                                     ['name' => '山田 太郎', 'role' => 'CEO', 'image' => 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=256&h=256&fit=crop', 'bio' => 'チームをリードするCEO。'],
                                     ['name' => '佐藤 花子', 'role' => 'デザイナー', 'image' => 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=256&h=256&fit=crop', 'bio' => 'ユーザー体験を設計。'],
                                     ['name' => '鈴木 一郎', 'role' => 'エンジニア', 'image' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=256&h=256&fit=crop', 'bio' => 'フロントエンド開発担当。'],
+                                ],
+                            ]); ?>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Atoms: Skeleton -->
+                <section id="atom-skeleton" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Skeleton</h2>
+                        <p class="text-gray-500">Loading placeholder animations.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="p-8 bg-white grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <?php get_template_part('parts/atoms/skeleton', null, ['type' => 'text', 'lines' => 3]); ?>
+                            <?php get_template_part('parts/atoms/skeleton', null, ['type' => 'circle']); ?>
+                            <?php get_template_part('parts/atoms/skeleton', null, ['type' => 'card']); ?>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Molecules: Toast -->
+                <section id="molecule-toast" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Toast</h2>
+                        <p class="text-gray-500">Notification messages.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="p-8 bg-gray-100 min-h-[200px] relative">
+                            <p class="text-sm text-gray-600 mb-4">静的プレビュー（実際はページ隅に表示されます）:</p>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3 min-w-[300px] max-w-md p-4 border rounded-lg shadow-lg bg-blue-50 border-blue-200">
+                                    <span class="flex-shrink-0 text-blue-800">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
+                                    </span>
+                                    <span class="text-blue-800">これは情報トーストです</span>
+                                </div>
+                                <div class="flex items-start gap-3 min-w-[300px] max-w-md p-4 border rounded-lg shadow-lg bg-green-50 border-green-200">
+                                    <span class="flex-shrink-0 text-green-800">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                    </span>
+                                    <span class="text-green-800">保存が完了しました</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Molecules: Table -->
+                <section id="molecule-table" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Table</h2>
+                        <p class="text-gray-500">Data table with headers and rows.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="p-8 bg-white">
+                            <?php get_template_part('parts/molecules/table', null, [
+                                'caption' => 'ユーザー一覧',
+                                'headers' => [
+                                    ['key' => 'name', 'label' => '名前'],
+                                    ['key' => 'email', 'label' => 'メール'],
+                                    ['key' => 'role', 'label' => '役割', 'align' => 'center'],
+                                ],
+                                'rows' => [
+                                    ['name' => '山田 太郎', 'email' => 'taro@example.com', 'role' => '管理者'],
+                                    ['name' => '佐藤 花子', 'email' => 'hanako@example.com', 'role' => '編集者'],
+                                    ['name' => '鈴木 一郎', 'email' => 'ichiro@example.com', 'role' => '購読者'],
+                                ],
+                            ]); ?>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Organisms: Drawer -->
+                <section id="organism-drawer" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Drawer</h2>
+                        <p class="text-gray-500">Side panel that slides in.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="p-8 bg-white">
+                            <button 
+                                type="button"
+                                onclick="openDrawer('demo-drawer')"
+                                class="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                            >
+                                ドロワーを開く
+                            </button>
+                            <?php get_template_part('parts/organisms/drawer', null, [
+                                'id' => 'demo-drawer',
+                                'title' => 'ドロワータイトル',
+                                'content' => '<p class="text-gray-600">これはドロワーのコンテンツです。サイドからスライドインします。</p><p class="text-gray-600 mt-4">ナビゲーション、フィルター、詳細情報などに使用できます。</p>',
+                            ]); ?>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Organisms: Carousel -->
+                <section id="organism-carousel" class="scroll-mt-24">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Carousel</h2>
+                        <p class="text-gray-500">Image slider with navigation.</p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl overflow-hidden shadow-sm">
+                        <div class="border-b bg-gray-50 px-4 py-2 text-xs font-mono text-gray-500 text-right">Preview</div>
+                        <div class="p-8 bg-white">
+                            <?php get_template_part('parts/organisms/carousel', null, [
+                                'autoplay' => false,
+                                'slides' => [
+                                    ['image' => 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=450&fit=crop', 'title' => '山の風景', 'description' => '美しい山々の景色'],
+                                    ['image' => 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=450&fit=crop', 'title' => 'ビーチ', 'description' => '砂浜と青い海'],
+                                    ['image' => 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=450&fit=crop', 'title' => '森林', 'description' => '緑豊かな森'],
                                 ],
                             ]); ?>
                         </div>
