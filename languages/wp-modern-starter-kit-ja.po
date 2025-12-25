@@ -1,4 +1,4 @@
-# Copyright (C) 2024 i-Willink Inc.
+# Copyright (C) 2025 i-Willink Inc.
 # This file is distributed under the MIT License.
 msgid ""
 msgstr ""

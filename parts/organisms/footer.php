@@ -39,9 +39,8 @@ $variant_classes = [
 $styles = $variant_classes[ $args['variant'] ] ?? $variant_classes['light'];
 
 $copyright = $args['copyright'] ?: sprintf(
-    '&copy; %s %s. All rights reserved.',
-    date( 'Y' ),
-    get_bloginfo( 'name' )
+    '&copy; %s i-Willink Inc. All rights reserved.',
+    date( 'Y' )
 );
 ?>
 
