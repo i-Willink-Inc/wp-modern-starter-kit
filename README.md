@@ -1,6 +1,6 @@
 # Modern WordPress Starter Kit
 
-[![CI](https://github.com/i-Willink-Inc/wp-modern-starter-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/i-Willink-Inc/wp-modern-starter-kit/actions/workflows/ci.yml)
+[![CI](https://github.com/i-Willink-Inc/wp-modern-starter-kit/actions/workflows/main.yml/badge.svg)](https://github.com/i-Willink-Inc/wp-modern-starter-kit/actions/workflows/main.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 PHPベースのWordPressテーマ開発を爆速化するスターターキットです。
